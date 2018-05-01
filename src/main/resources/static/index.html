@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html data-ng-app="kalahApp">
+<head>
+    <title>Kalah Game</title>
+    <link href='/style.css' rel='stylesheet' type='text/css'/>
+</head>
+<body data-ng-controller="gameController">
+
+
+<h1>
+    Game status: {{game.gameStatus}}
+</h1>
+
+<h1 data-ng-if="game.gameStatus == 'FINISHED' " >
+        <span data-ng-if="game.winner == null">Draw</span>
+        <span data-ng-if="game.winner != null">Winner: {{game.winner.name}}</span>
+</h1>
+
+<table border="1" width="100%" align="center">
+    <tbody>
+        <tr align="center">
+            <td data-ng-click='play(game.id, 2, 13)'><div class="fancy">{{game.board.pits[13].stoneCount}}</div></td>
+            <td data-ng-click='play(game.id, 2, 12)'><div class="fancy">{{game.board.pits[12].stoneCount}}</div></td>
+            <td data-ng-click='play(game.id, 2, 11)'><div class="fancy">{{game.board.pits[11].stoneCount}}</div></td>
+            <td data-ng-click='play(game.id, 2, 10)'><div class="fancy">{{game.board.pits[10].stoneCount}}</div></td>
+            <td data-ng-click='play(game.id, 2, 9)'><div class="fancy">{{game.board.pits[9].stoneCount}}</div></td>
+            <td data-ng-click='play(game.id, 2, 8)'><div class="fancy">{{game.board.pits[8].stoneCount}}</div></td>
+        </tr>
+
+        <tr align="center">
+            <td><div class="fancy">{{game.board.pits[14].stoneCount}}</div></td>
+            <td colspan="4"></td>
+            <td><div class="fancy">{{game.board.pits[7].stoneCount}}</div></td>
+        </tr>
+
+        <tr align="center">
+            <td data-ng-click='play(game.id, 1, 1)'><div class="fancy">{{game.board.pits[1].stoneCount}}</div></td>
+            <td data-ng-click='play(game.id, 1, 2)'><div class="fancy">{{game.board.pits[2].stoneCount}}</div></td>
+            <td data-ng-click='play(game.id, 1, 3)'><div class="fancy">{{game.board.pits[3].stoneCount}}</div></td>
+            <td data-ng-click='play(game.id, 1, 4)'><div class="fancy">{{game.board.pits[4].stoneCount}}</div></td>
+            <td data-ng-click='play(game.id, 1, 5)'><div class="fancy">{{game.board.pits[5].stoneCount}}</div></td>
+            <td data-ng-click='play(game.id, 1, 6)'><div class="fancy">{{game.board.pits[6].stoneCount}}</div></td>
+        </tr>
+
+    </tbody>
+</table>
+
+    <p style="color:red" data-ng-if="errorMessage ">Error message: {{errorMessage}}</p>
+    <script src="/lib/angular.min.js"></script>
+
+</body>
+
+<script>
+var app = angular.module('kalahApp', [])
+app.controller('gameController', function($scope, $http) {
+
+    $http.post("/api/kalah/games/").then(function(resp){
+        console.log(resp.data);
+        $scope.game = resp.data;
+    })
+
+    $scope.play = function(gameId, playerId, pitId){
+
+        $scope.errorMessage = "";
+        $http.put("/api/kalah/games/"+gameId+"/pits/"+pitId+"").then(function(resp){
+            console.log(resp.data);
+            $scope.game = resp.data;
+            $scope.pits = resp.data.board.pits;
+
+            $scope.total = 0
+            angular.forEach(resp.data.board.pits, function(pit, key) {
+              $scope.total += pit.stoneCount;
+            });
+
+        }).catch(function(resp){
+            console.log(resp);
+            $scope.errorMessage = resp.data.message;
+        })
+    }
+
+
+
+
+
+});
+</script>
+
+</html>
+
