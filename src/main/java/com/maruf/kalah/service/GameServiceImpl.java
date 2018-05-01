@@ -1,6 +1,5 @@
 package com.maruf.kalah.service;
 
-import com.maruf.kalah.exception.KalahException;
 import com.maruf.kalah.model.Game;
 import com.maruf.kalah.repository.GameMemoryRepository;
 import com.maruf.kalah.model.Pit;
