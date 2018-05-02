@@ -11,19 +11,19 @@ The default implementation of this app for 6-stone.
 * No stones are put in the opponent's' Kalah. If the players last stone lands in his own Kalah, he gets another turn. This can be repeated any number of times before it's the other player's turn.
 
 ### Limitation
-* Two player have to play on the same screen. 
+* Two players have to play on the same screen. 
 
  
 ### Prerequisites
 * [Java 1.8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)  - Programming language
 * [Maven 3.5.0](https://maven.apache.org/download.cgi) - Build tool
 
-### Installing
+### Installing & Running
 A step by step series of examples that tell you have to get a development env running
 Say what the step will be
 
 ```
-$ git clone <repository_url>
+$ git clone https://github.com/maruf571/kalah
 ```
 
 And cd to the project root
@@ -32,28 +32,23 @@ And cd to the project root
 $ cd kalah
 ```
 
-### Running the server 
-
-Running the test
-
+Run test
 ```
 $ mvn test
 ```
 
-Running the web app in dev mode
+Run the web server on dev mode
 ```
 $ mvn spring-boot:run
 ```
 
- Running the web app in prod mode
+ Run the web server on prod mode
 ```
 $ mvn spring-boot:run -Dspring-boot.run.profiles=prod
 ```
 
-### Running the App
-* Api documentation browse [http://localhost:7070/swagger-ui.html](http://localhost:7070/swagger-ui.html)
-* To Run application browse  [http://localhost:7070](http://localhost:7070)
-
+* Browse Api documentation [http://localhost:7070/swagger-ui.html](http://localhost:7070/swagger-ui.html)
+* Play the game  [http://localhost:7070](http://localhost:7070)
 
 
 ## Built With
