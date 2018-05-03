@@ -44,10 +44,11 @@ $ mvn spring-boot:run -Dspring-boot.run.profiles=prod
 ```
 
 ### API documentation
-After running the project on dev environment and Browse
+After running the project on dev environment and browse
 [http://localhost:7070/swagger-ui.html](http://localhost:7070/swagger-ui.html)
 
 ### Play the game
+After running the project & browse
 [http://localhost:7070](http://localhost:7070)
 
 
