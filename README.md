@@ -13,42 +13,42 @@ The default implementation of this app for 6-stone.
 ### Limitation
 * Two players have to play on the same screen. 
 
+## Install & Running
  
 ### Prerequisites
 * [Java 1.8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)  - Programming language
 * [Maven 3.5.0](https://maven.apache.org/download.cgi) - Build tool
 
-### Installing & Running
-A step by step series of examples that tell you have to get a development env running
-Say what the step will be
 
+### Pull from git 
 ```
 $ git clone https://github.com/maruf571/kalah
-```
-
-And cd to the project root
-
-```
 $ cd kalah
 ```
 
-Run test
+### Build & run 
+
+* Run test
 ```
 $ mvn test
 ```
 
-Run the web server on dev mode
+* Run the web server on dev mode
 ```
 $ mvn spring-boot:run
 ```
 
- Run the web server on prod mode
+* Run the web server on prod mode
 ```
 $ mvn spring-boot:run -Dspring-boot.run.profiles=prod
 ```
 
-* Browse Api documentation [http://localhost:7070/swagger-ui.html](http://localhost:7070/swagger-ui.html)
-* Play the game  [http://localhost:7070](http://localhost:7070)
+### API documentation
+After running the project on dev environment and Browse
+[http://localhost:7070/swagger-ui.html](http://localhost:7070/swagger-ui.html)
+
+### Play the game
+[http://localhost:7070](http://localhost:7070)
 
 
 ## Built With
